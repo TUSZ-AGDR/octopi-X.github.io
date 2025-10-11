@@ -1,0 +1,207 @@
+<!--
+ Copyright 2025 Hency
+ 
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ 
+     https://www.apache.org/licenses/LICENSE-2.0
+ 
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Octopi-ViTaL: Vision–Tactile–Language Foundation Model</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+      background-color: #fafafa;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
+
+    /* Video (4:3) */
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+      aspect-ratio: 4 / 3;
+    }
+
+    video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background-color: #000;
+    }
+
+    /* Logos in a row */
+    .logo-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin: 20px 0 30px;
+    }
+    .logo-row img {
+      height: 60px;
+      width: auto;
+      object-fit: contain;
+      transition: transform 0.2s ease;
+    }
+    .logo-row img:hover {
+      transform: scale(1.05);
+    }
+
+    a { color: #2563eb; }
+    a:hover { text-decoration: underline; }
+
+    sup {
+        font-size: 0.7em;
+        vertical-align: super;
+        margin-left: -2px;     /* ✅ 往左靠近文字 */
+        position: relative;
+        top: -0.2em;           /* ✅ 稍微上移 */
+    }
+
+  </style>
+</head>
+
+<body class="flex flex-col items-center px-6 py-10">
+
+  <!-- Header -->
+  <header class="w-full max-w-5xl text-center mb-10">
+
+    <h1 class="text-5xl font-bold mb-3 text-cyan-600">
+        Octopi-X: Robotic Perception with a Large Tactile-Vision-Language Model for Physical Property Inference
+    </h1>
+
+    <!-- Author list -->
+    <p class="text-lg text-gray-700 leading-relaxed mb-2">
+      Zexiang Guo<sup>1*</sup>,
+      <a href="https://hency-727.github.io/" target="_blank" class="font-medium hover:underline">Hengxiang Chen<sup>1*</sup></a>,
+      Xinheng Mai<sup>1*</sup>,
+      Qiusang Qiu<sup>1</sup>,
+      <a href="https://sgim.sztu.edu.cn/info/1161/2762.htm" target="_blank" class="font-medium hover:underline">Gan Ma<sup>2</sup>,
+      <a href="https://research.nu.edu.kz/en/persons/zhanat-kappassov" target="_blank" class="font-medium hover:underline">Zhanat Kappassov<sup>3</sup></a>,
+      <a href="https://tusz-agdr.github.io/author/qiang-li/" target="_blank" class="font-medium hover:underline">Qiang Li<sup>1†</sup></a>,
+      and 
+      <a href="https://www.linkedin.com/in/nutan-chen-17678678?originalSubdomain=de" target="_blank" class="font-medium hover:underline">Nutan Chen<sup>4</sup></a>
+    </p>
+
+    <p class="text-sm text-gray-600 mb-3">
+      <sup>1</sup> College of Big Data and Internet, Shenzhen Technology University, China<br>
+      <sup>2</sup> Sino-German College of Intelligent Manufacturing, Shenzhen Technology University, China<br>
+      <sup>3</sup> Robotics Department, Institute of Smart Systems and Artificial Intelligence (ISSAI), Nazarbayev University, Kazakhstan<br>
+      <sup>4</sup> Volkswagen Group, Machine Learning Research Lab, 80805 Munich, DE
+    </p>
+    <p class="text-sm italic text-gray-500 mb-2">
+      *These authors contributed equally to this work. †Corresponding author
+    </p>
+
+    <p class="text-cyan-700 font-bold text-2xl mb-4 drop-shadow-sm text-center">
+      Oral & Poster presentation in <strong>IROS 2025 Workshop</strong> 🎉
+    </p>
+
+    <!-- Institution Logos (row layout) -->
+    <div class="logo-row">
+      <img src="page_resource/sztu_logo.jpg" alt="STU Logo">
+      <img src="page_resource/nazarbayev_logo.png" alt="NAU Logo">
+      <img src="page_resource/drl_logo.png" alt="Lab Logo">
+
+    </div>
+
+    <!-- Paper + Contact -->
+    <div class="space-x-4 mt-2">
+      <a href="https://arxiv.org/abs/2506.19303" target="_blank"
+         class="px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition">📄 Paper (Arxiv)</a>
+      <a href="https://openreview.net/forum?id=fx00MuY7RW" target="_blank"
+         class="px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition">📄 Paper (OpenReview)</a>
+      <a href="mailto:hencychen@stu.edu.cn" target="_blank"
+         class="px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition">🧠 Code (To be published)</a>
+    </div>
+  </header>
+
+  <!-- Video -->
+  <section class="w-full max-w-5xl text-center mb-12">
+    <h2 class="text-2xl font-semibold mb-4">Demonstration Video</h2>
+    <div class="video-wrapper">
+      <video controls poster="">
+        <source src="page_resource/demo_video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </section>
+
+  <!-- Abstract -->
+  <section class="w-full max-w-4xl mb-10">
+    <h2 class="text-2xl font-semibold mb-3">Abstract</h2>
+    <p class="text-gray-700 leading-relaxed text-justify">
+
+      <!-- <strong>Octopi-X</strong>  -->
+        Inferring physical properties can significantly enhance robotic manipulation by enabling robots to handle objects safely and efficiently through adaptive grasping strategies. Previous approaches have typically
+        relied on either tactile or visual data, limiting their ability to fully capture properties. We introduce a novel cross-modal perception framework that integrates visual observations with tactile representations within a
+        multimodal vision-language model. Our physical reasoning framework, which employs a hierarchical feature alignment mechanism and a refined prompting strategy, enables our model to make property-specific predictions that strongly correlate with ground-truth measurements. Evaluated
+        on 35 diverse objects, our approach outperforms existing baselines and demonstrates strong zero-shot generalization.
+    </p>
+  </section>
+
+  <!-- Acknowledgment -->
+  <section class="w-full max-w-4xl mb-10">
+    <h2 class="text-2xl font-semibold mb-3">Acknowledgment</h2>
+    <p class="text-gray-700 leading-relaxed">
+        This research is supported by "Natural Science Foundation of Top Talent of SZTU" (Grant No. GDRC202411)
+
+    </p>
+  </section>
+
+  <!-- Citation -->
+  <section class="w-full max-w-4xl mb-10">
+    <h2 class="text-2xl font-semibold mb-3">Citation</h2>
+    <pre class="bg-gray-100 rounded-lg p-4 text-sm overflow-x-auto">
+@inproceedings{chen2025octopi-x,
+title     = {Octopi-X: Robotic Perception with a Large Tactile-Vision-Language Model for Physical Property Inference},
+author    = {Zexiang Guo, Hengxiang Chen, Xinheng Mai, Qiusang Qiu, Gan Ma, Zhanat Kappassov, Qiang Li, and Nutan Chen},
+booktitle = {IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) Workshop},
+year      = {2025},
+url       = {https://openreview.net/forum?id=fx00MuY7RW}
+}
+    </pre>
+  </section>
+
+  <!-- Contact -->
+  <section class="w-full max-w-4xl mb-10 text-center">
+    <h2 class="text-2xl font-semibold mb-3">Contact</h2>
+    <p class="text-gray-700">
+      For inquiries, please contact:<br>
+      <strong><a href="mailto:zexiangguo@stu.edu.cn">zexiangguo@stu.edu.cn</a></strong><br>
+      <strong><a href="mailto:hengxiangchen@stu.edu.cn">hengxiangchen@stu.edu.cn</a></strong>
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-gray-500 text-sm mt-12 text-center">
+    <p>© 2025 <a href="https://hencychen.github.io/" class="hover:underline">Hengxiang Chen</a> · Shenzhen Technology University · All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
