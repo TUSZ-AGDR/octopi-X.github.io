@@ -54,23 +54,33 @@
     }
 
     /* Logos in a row */
+
+
     .logo-row {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 32px;
-      flex-wrap: wrap;
-      margin: 20px 0 30px;
+      flex-wrap: wrap;        /* ✅ 允许自动换行 */
+      gap: 20px;              /* ✅ 控制图片间距 */
+      margin: 10px 0 20px;
     }
+
     .logo-row img {
       height: 60px;
       width: auto;
+      max-width: 40vw;        /* ✅ 限制在手机屏幕时不会太宽 */
       object-fit: contain;
       transition: transform 0.2s ease;
     }
-    .logo-row img:hover {
-      transform: scale(1.05);
+
+    @media (max-width: 600px) {
+      .logo-row img {
+        height: 40px;         /* ✅ 在手机端缩小图片 */
+        max-width: 80vw;      /* ✅ 防止溢出 */
+      }
     }
+
+
 
     a { color: #2563eb; }
     a:hover { text-decoration: underline; }
@@ -109,10 +119,10 @@
     </p>
 
     <p class="text-sm text-gray-600 mb-3">
-      <sup>1</sup> College of Big Data and Internet, Shenzhen Technology University, China<br>
+      <sup>1</sup> School of Artificial Intelligence, Shenzhen Technology University, China<br>
       <sup>2</sup> Sino-German College of Intelligent Manufacturing, Shenzhen Technology University, China<br>
       <sup>3</sup> Robotics Department, Institute of Smart Systems and Artificial Intelligence (ISSAI), Nazarbayev University, Kazakhstan<br>
-      <sup>4</sup> Volkswagen Group, Machine Learning Research Lab, 80805 Munich, DE
+      <sup>4</sup> Foundation Robotics, Germany
     </p>
     <p class="text-sm italic text-gray-500 mb-2">
       *These authors contributed equally to this work. †Corresponding author
@@ -127,7 +137,6 @@
       <img src="page_resource/sztu_logo.jpg" alt="STU Logo">
       <img src="page_resource/nazarbayev_logo.png" alt="NAU Logo">
       <img src="page_resource/drl_logo.png" alt="Lab Logo">
-
     </div>
 
     <!-- Paper + Contact -->
